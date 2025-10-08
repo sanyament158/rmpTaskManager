@@ -1,0 +1,10 @@
+i need make a adequate architecture for database ecosystem.
+i will setup linux on 120 gb disk, and windows on 250gb disk.
+now this repo i'll push on github repo, and continue to work with him,
+when two os will be complete.
+--
+in the future i will create adnroid studio project for 
+to make a lab3 rmp.
+i hope evertythink will be fine ;( 
+
+don't worry sanyament, you'll do fine
