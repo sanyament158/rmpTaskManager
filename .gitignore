@@ -91,7 +91,7 @@ tmp/
 xampp-control.ini
 
 ## Database dumps (unless you want to version them)
-*.sql
+#*.sql
 *.dump
 
 # Postman
