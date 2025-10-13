@@ -31,9 +31,9 @@ create table Tasks(
     IdImportance int,
     Title varchar(100),
     Description text,
-	FOREIGN KEY (IdOwner) REFERENCES user(Id),
-    FOREIGN KEY (IdStatus) REFERENCES taskstatus(Id),
-    FOREIGN KEY (IdCategory) REFERENCES taskcategory(Id),
-    FOREIGN KEY (IdImportance) REFERENCES taskimportance(Id)
+	FOREIGN KEY (IdOwner) REFERENCES User(Id),
+    FOREIGN KEY (IdStatus) REFERENCES TaskStatus(Id),
+    FOREIGN KEY (IdCategory) REFERENCES TaskCategory(Id),
+    FOREIGN KEY (IdImportance) REFERENCES TaskImportance(Id)
 );
 --was runned
