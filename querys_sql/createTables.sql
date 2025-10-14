@@ -37,3 +37,6 @@ create table Tasks(
     FOREIGN KEY (IdImportance) REFERENCES TaskImportance(Id)
 );
 --was runned
+alter table User
+add Password INT
+--was runned
