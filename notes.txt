@@ -15,9 +15,33 @@ problem is a absence GoalViewHolder
 code override method -> absence Holder -> create class GoalViewHolder -> 
 create and code companion object
 --
-remaining (in GoalAdapter){
+remaining (in GoalAdapter){ --complete
 	code goalItem (md), --complete
-	code rv,
+	code rv, --complete
 	to finish code onBindViewHolder, --complete
 	code static class --complete
 }
+
+--
+15.10 00:00 session: 
+task: study reg.php --complete
+task: code reg.php --complete
+task: study login.php --complete 
+task: code login.php --complete
+task: study to request/response in base{
+	study query in base --complete 
+	code query //select * from table --complete
+	connect rv and query response //hard *
+	final goal: output table Tasks in rv
+}
+task: Authorization { (now)
+	code UserObject.kt (now)
+	study SessionManager
+	code SessionManager.kt
+	notes: {
+		at first i'll create UserObject.kt, then implement the simple auth
+	}
+}
+notes:
+in the future, must be git init in /opt/htdocs/taskmanagerapi/
+

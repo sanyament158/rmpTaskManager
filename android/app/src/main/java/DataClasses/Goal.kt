@@ -2,7 +2,7 @@ package com.example.taskmanager.DataClasses
 
 import android.R
 
-public class Goal(
+public data class Goal(
     public val IdOwner: Int,
     val IdStatus: Int,
     val IdCategory: Int,
