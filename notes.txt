@@ -35,7 +35,10 @@ task: study to request/response in base{
 	final goal: output table Tasks in rv
 }
 task: Authorization { (now)
-	code UserObject.kt (now)
+	code UserObject.kt (now){
+		add Request/Response UserObjects
+		
+	}
 	study SessionManager
 	code SessionManager.kt
 	notes: {
@@ -44,4 +47,4 @@ task: Authorization { (now)
 }
 notes:
 in the future, must be git init in /opt/htdocs/taskmanagerapi/
-
+asks: login.php: why post and not get
