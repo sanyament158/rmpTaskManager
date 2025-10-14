@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    size for fonts in sp    -->
+    <dimen name="cardViewGoal">12sp</dimen>
+</resources>

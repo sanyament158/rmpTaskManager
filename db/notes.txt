@@ -8,3 +8,16 @@ to make a lab3 rmp.
 i hope evertythink will be fine ;( 
 
 don't worry sanyament, you'll do fine
+
+-- 14.10 07:00
+now i override method onCreateViewHolder in Adapters/GoalAdapter.kt
+problem is a absence GoalViewHolder
+code override method -> absence Holder -> create class GoalViewHolder -> 
+create and code companion object
+--
+remaining (in GoalAdapter){
+	code goalItem (md), --complete
+	code rv,
+	to finish code onBindViewHolder, --complete
+	code static class --complete
+}
