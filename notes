@@ -35,8 +35,9 @@ task: study to request/response in base{
 	final goal: output table Tasks in rv
 }
 task: Authorization { (now)
-	code UserObject.kt (now){
-		add Request/Response UserObjects
+	code UserObject.kt --complete {
+		add Request/Response User.kt -- complete 
+(this class will be updated as needed) 
 		
 	}
 	study SessionManager
@@ -44,7 +45,12 @@ task: Authorization { (now)
 	notes: {
 		at first i'll create UserObject.kt, then implement the simple auth
 	}
+	now problem is{
+		var responseJson has not init. i think trouble with 
+		visibility scope
+	}
+	code login logic (now)
 }
 notes:
-in the future, must be git init in /opt/htdocs/taskmanagerapi/
-asks: login.php: why post and not get
+in the future, must be git init in /opt/htdocs/taskmanagerapi/ --success
+tasks: login.php: why post and not get --success

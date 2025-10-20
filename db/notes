@@ -1,0 +1,5 @@
+task:
+alter table (password from int to string) --success
+add php script get all table User --success
+code sql logic in reg.php --success
+backup database in .sql format --will
