@@ -54,3 +54,9 @@ task: Authorization { (now)
 notes:
 in the future, must be git init in /opt/htdocs/taskmanagerapi/ --success
 tasks: login.php: why post and not get --success
+
+pre-commit 27oct 17:30
+add class DataBaseConnection.kt{
+	static data for connection
+	re-code md activity_login.xml
+}

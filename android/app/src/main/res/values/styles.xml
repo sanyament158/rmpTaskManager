@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ButtonDefault">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="EditTextDefault" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/CoastalVibes_sky</item>
+        <item name="android:layout_margin">8dp</item>
+<!--        todo: shape for corner-radius   -->
+<!--        <item name="android:textColor">@color/white</item> todo: smth wrong-->
+
+
+    </style>
+</resources>
