@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="64dp" android:viewportHeight="512" android:viewportWidth="512" android:width="64dp">
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M478.61,200.35l0,-55.65l0,-11.13l-33.39,0l0,-33.39l-33.39,0l0,-33.39l-66.78,0l0,-33.39l-33.39,0l0,33.39l0,66.78l0,11.13l-111.3,0l0,-11.13l0,-66.78l0,-33.39l-33.39,0l0,33.39l-66.78,0l0,33.39l-33.39,0l0,33.39l-33.39,0l0,11.13l0,55.65l-33.39,0l0,111.3l33.39,0l0,33.39l33.39,0l0,55.65l33.39,0l0,-55.65l311.65,0l0,55.65l33.39,0l0,-55.65l33.39,0l0,-33.39l33.39,0l0,-111.3z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M378.43,400.7h33.39v77.91h-33.39z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M100.17,400.7h33.39v77.91h-33.39z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M133.57,478.61h244.87v33.39h-244.87z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M178.09,367.3h33.39v77.91h-33.39z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M300.52,367.3h33.39v77.91h-33.39z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+      
+    <path android:fillColor="@color/AutumnHarvest_brownRed" android:pathData="M200.35,0h111.3v33.39h-111.3z" android:strokeColor="#EE6C4D" android:strokeWidth="1"/>
+    
+</vector>

@@ -38,21 +38,21 @@ class LoginActivity : AppCompatActivity() {
 
         with(binding){
             btnSubmit.setOnClickListener {
-                if (etUsername.text != null && etPassword.text != null){
-                    val username: String = etUsername.text.toString()
+                if (etLogin.text != null && etPassword.text != null){
+                    val username: String = etLogin.text.toString()
                     val password: String = etPassword.text.toString()
                     val userRequestObj: UserRequest = UserRequest(username, password)
 
-                    RegistraionUser(username, password)
+                    registrationUser(username, password)
                 }
             }
         }
     }
-    private fun RegistraionUser(username: String, password: String){
+    private fun registrationUser(username: String, password: String){
         // work with api
         lifecycleScope.launch(Dispatchers.IO){
             try {
-                val url: URL = URL("${DataBaseConnection.connectionString}login/reg.php")
+                val url: URL = URL("${DataBaseConnection.url}login/reg.php")
                 val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "POST"
                 connection.doInput = true

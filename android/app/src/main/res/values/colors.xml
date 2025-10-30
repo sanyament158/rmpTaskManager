@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-<!--    pallete: Coastal Vibes (5pcs)
+<!--    palette: Coastal Vibes (5pcs)
 [https://coolors.co/palette/3d5a80-98c1d9-e0fbfc-ee6c4d-293241]   -->
     <color name="CoastalVibes_blue">#3D5A80</color>
     <color name="CoastalVibes_paleBlue">#98C1D9</color>
@@ -16,4 +16,11 @@
     <color name="CoastalVibes_red">#EE6C4D</color>
     <color name="CoastalVibes_black">#293241</color>
 
+<!--    palette: Autumn Harvest (5pcs)
+[https://coolors.co/palette/6f1d1b-bb9457-432818-99582a-ffe6a7]-->
+    <color name="AutumnHarvest_brownRed">#6F1D1B</color>
+    <color name="AutumnHarvest_coffee">#BB9457</color>
+    <color name="AutumnHarvest_brown">#432818</color>
+    <color name="AutumnHarvest_paleBrown">#99582A</color>
+    <color name="AutumnHarvest_cheese">#FFE6A7</color>
 </resources>

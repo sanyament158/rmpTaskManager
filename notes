@@ -1,5 +1,5 @@
-i need make a adequate architecture for database ecosystem.
-i will setup linux on 120 gb disk, and windows on 250gb disk.
+i need make a adequate architecture for database ecosystem. --success
+i will setup linux on 120 gb disk, and windows on 250gb disk. --success
 now this repo i'll push on github repo, and continue to work with him,
 when two os will be complete.
 --
@@ -12,8 +12,7 @@ don't worry sanyament, you'll do fine
 -- 14.10 07:00
 now i override method onCreateViewHolder in Adapters/GoalAdapter.kt
 problem is a absence GoalViewHolder
-code override method -> absence Holder -> create class GoalViewHolder -> 
-create and code companion object
+code override method -> absence Holder -> create class GoalViewHolder -> create and code companion object
 --
 remaining (in GoalAdapter){ --complete
 	code goalItem (md), --complete
@@ -31,22 +30,21 @@ task: code login.php --complete
 task: study to request/response in base{
 	study query in base --complete 
 	code query //select * from table --complete
-	connect rv and query response //hard *
+	connect rv and query response //hard * --in future
 	final goal: output table Tasks in rv
 }
 task: Authorization { (now)
 	code UserObject.kt --complete {
 		add Request/Response User.kt -- complete 
-(this class will be updated as needed) 
-		
+(this class will be updated as needed) 	
 	}
-	study SessionManager
-	code SessionManager.kt
+	study SessionManager -- in future
+	code SessionManager.kt -- in future
 	notes: {
 		at first i'll create UserObject.kt, then implement the simple auth
 	}
 	now problem is{
-		var responseJson has not init. i think trouble with 
+		var responseJson has not init. i think trouble with // no problem
 		visibility scope
 	}
 	code login logic (now)
@@ -57,6 +55,5 @@ tasks: login.php: why post and not get --success
 
 pre-commit 27oct 17:30
 add class DataBaseConnection.kt{
-	static data for connection
-	re-code md activity_login.xml
+	
 }
