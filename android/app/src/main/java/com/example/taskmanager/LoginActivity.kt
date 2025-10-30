@@ -41,53 +41,56 @@ class LoginActivity : AppCompatActivity() {
                 if (etLogin.text != null && etPassword.text != null){
                     val username: String = etLogin.text.toString()
                     val password: String = etPassword.text.toString()
-                    val userRequestObj: UserRequest = UserRequest(username, password)
+                    val userResponse = AuthorizationUser(UserRequest(username, password))
 
-                    registrationUser(username, password)
+                    if (userResponse.IsAuth){
+                        tvForgetPassword.text = "auth success"
+                        tvForgetPassword.setTextColor(getColor(R.color.teal_700))
+                    }
+
                 }
             }
         }
     }
-    private fun registrationUser(username: String, password: String){
+    private fun registrationUser(inputUser: UserRequest){
         // work with api
         lifecycleScope.launch(Dispatchers.IO){
             try {
+                // init connection
                 val url: URL = URL("${DataBaseConnection.url}login/reg.php")
                 val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+                //connection properties
                 connection.requestMethod = "POST"
                 connection.doInput = true
                 connection.doOutput = true
                 connection.setRequestProperty("Content-Type", "application/json")
+
                 Log.i("URL", "URL has been created")
 
                 // create request json
-                val json: JSONObject = JSONObject()
-                json.put("username", username)
-                json.put("password", password)
-                // logging request body
-                Log.i("JSON", "json has been created with data")
-                Log.i("json data", "${json.toString()}")
+                val requestJson: JSONObject = JSONObject()
+                requestJson.put("username", inputUser.Username)
+                requestJson.put("password", inputUser.Password )
 
-                val os: OutputStream = connection.outputStream
-                os.write(json.toString().toByteArray(Charsets.UTF_8))
-                Log.i("OutputStream", "os.write(json) is success")
-                os.flush()
-                Log.i("OutputStream", "os.flush() has been called")
-                os.close()
+                Log.i("JSON request", "has been created; body: ${requestJson}")
 
-                // logging response code
+                // flush request
+                connection.outputStream.use {
+                    it.write(requestJson.toString().toByteArray(Charsets.UTF_8))
+                    Log.i("OutputStream", "JSON data written successfully")
+                }
                 val responseCode = connection.responseCode
+
                 Log.i("ResponseCode", "http code = ${responseCode}")
 
-                // logging json's body
-                val inputStream = connection.inputStream
-                val response = inputStream.bufferedReader(Charsets.UTF_8).use {it.readText()}
-                val jsonObject = JSONObject(response)
-                Log.i("Response's body", "${response}")
+                // fetch response
+                val responseText = connection.inputStream.bufferedReader(Charsets.UTF_8).use {it.readText()}
+                val responseJson = JSONObject(responseText)
+                Log.i("responseJson", "body: ${responseJson}")
 
                 // [for dev only. logging some object -- as a example]
-                Log.i("[json] success", "${jsonObject.getBoolean("success")}")
-                Log.i("[json] username", "${jsonObject.getString("username")}")
+                Log.i("[json] success", "${responseJson.getBoolean("success")}")
+                Log.i("[json] username", "${responseJson.getString("username")}")
 
 
             } catch (error: Exception) {
@@ -95,7 +98,42 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-//    private fun AuthorizationUser(username: String, password: String): UserResponse{ todo: to code (in the future)
-//
-//    }
+    private fun AuthorizationUser(inputUser: UserRequest): UserResponse{
+        lateinit var responseJson: JSONObject
+        //work with api
+        lifecycleScope.launch(Dispatchers.IO){
+            try{
+                // init connection
+                val url: URL = URL("${DataBaseConnection.url}login/login.php")
+                val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+                // connection properties
+                connection.requestMethod = "POST"
+                connection.doOutput = true
+                connection.doInput = true
+                connection.setRequestProperty("Content-Type", "application/json")
+
+                Log.i("URL", "URL has been created")
+
+                //create request json
+                val requestJson: JSONObject = JSONObject()
+                requestJson.put("username", inputUser.Username)
+                requestJson.put("password", inputUser.Password)
+
+                Log.i("JSON request", "has been created; body: ${requestJson}")
+
+                // flush request
+                connection.outputStream.use {
+                    it.write(requestJson.toString().toByteArray(Charsets.UTF_8))
+                    Log.i("OutputStream", "JSON data written successfully")
+                }
+
+                // fetch response
+                val responseText = connection.inputStream.bufferedReader(Charsets.UTF_8).use{it.readText()}
+                responseJson = JSONObject(responseText)
+            } catch (e: Exception){
+                Log.e("error", "message: ${e.message}")
+            }
+        }
+        return UserResponse(Username = responseJson.getString("Username"), IdRole = 0, IsAuth = true) // todo: idrole must be variable
+    }
 }

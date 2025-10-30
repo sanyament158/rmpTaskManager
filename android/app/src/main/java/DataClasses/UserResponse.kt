@@ -5,5 +5,8 @@ data class UserResponse(
     val Username: String,
     val Fname: String? = null,
     val Lname: String? = null,
-    val IdRole: Int
+    val IdRole: Int,
+    val IsAuth: Boolean = false
 )
+
+// must not be empty: Username, IdRole

@@ -53,7 +53,8 @@ notes:
 in the future, must be git init in /opt/htdocs/taskmanagerapi/ --success
 tasks: login.php: why post and not get --success
 
-pre-commit 27oct 17:30
-add class DataBaseConnection.kt{
-	
+pre-commit 30oct 21:00{
+	touch Registration method: optimize method (outputStream code)
+	to code Authorization method
 }
+
