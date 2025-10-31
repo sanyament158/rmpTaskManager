@@ -15,6 +15,23 @@ public class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        with(binding){
+            tvGreeting.setText("hello, ${CurrentUser.Username} \nyou have {count} tasks at today") //todo: fname and lname implement
+
+            btnGoToTasks.setOnClickListener {
+                // todo: go to tasks activity
+
+            }
+
+            btnGoToStock.setOnClickListener {
+                //todo: go to stock activity
+            }
+
+            btnGoToProfile.setOnClickListener {
+                //todo: go to profile activity
+            }
+        }
+
 
     }
 }

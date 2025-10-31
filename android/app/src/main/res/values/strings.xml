@@ -2,5 +2,11 @@
     <string name="app_name">taskmanager</string>
     <string name="forgetPassword">forget password?</string>
     <string name="goToTasks">go to tasks</string>
+    <string name="goToStock">go to stock</string>
+    <string name="goToProfile">go to profile</string>
     <string name="goBack">go back</string>
+    <string name="greetingMainTasks">here is your tasks</string>
+    <string name="myTasks">my</string>
+    <string name="selectTasks">select</string>
+
 </resources>
