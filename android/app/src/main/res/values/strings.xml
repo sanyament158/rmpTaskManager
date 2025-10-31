@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">taskmanager</string>
     <string name="forgetPassword">forget password?</string>
+    <string name="goToTasks">go to tasks</string>
+    <string name="goBack">go back</string>
 </resources>

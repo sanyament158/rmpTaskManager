@@ -4,6 +4,7 @@ import BDModels.User
 import CurrentUser
 import DataClasses.UserRequest
 import DataClasses.UserResponse
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +32,7 @@ import androidx.lifecycle.lifecycleScope
 
 // Для ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlin.jvm.java
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -47,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                     val password: String = etPassword.text.toString()
                     val userRequest = UserRequest(username, password)
 
-                    lifecycle.coroutineScope.launch(Dispatchers.IO){
+                     lifecycle.coroutineScope.launch(Dispatchers.IO){
                         val authUser = AuthorizationUser(userRequest)
                         if (authUser.IsAuth) {
                             CurrentUser.Username = authUser.Username
@@ -61,15 +63,17 @@ class LoginActivity : AppCompatActivity() {
                             // todo: handle a bad auth
                         }
 
+
                     }
                 }
             }
         }
 
     }
-    private fun onSuccessfulAuthorization(){
-        with(binding){
-            // todo: go to next activity
+    private suspend fun onSuccessfulAuthorization(){
+        withContext(Dispatchers.Main){
+            val intent = Intent(this@LoginActivity, MainActivity().javaClass)
+            startActivity(intent)
         }
     }
     private fun registrationUser(inputUser: UserRequest){
