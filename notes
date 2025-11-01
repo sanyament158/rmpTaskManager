@@ -33,7 +33,7 @@ task: study to request/response in base{
 	connect rv and query response //hard * --in future
 	final goal: output table Tasks in rv
 }
-task: Authorization { (now)
+task: Authorization { --complete
 	code UserObject.kt --complete {
 		add Request/Response User.kt -- complete 
 (this class will be updated as needed) 	
@@ -47,14 +47,14 @@ task: Authorization { (now)
 		var responseJson has not init. i think trouble with // no problem
 		visibility scope
 	}
-	code login logic (now)
+	code login logic --complete
 }
 notes:
 in the future, must be git init in /opt/htdocs/taskmanagerapi/ --success
 tasks: login.php: why post and not get --success
 
 pre-commit 31oct 21:00{
-	add new activity
-	implement goto			
+	in Goal.kt use the human-readble values
+	
 }
 

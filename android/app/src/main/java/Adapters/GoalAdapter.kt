@@ -4,44 +4,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import com.example.taskmanager.DataClasses.Goal;
 import androidx.recyclerview.widget.RecyclerView
-// rv = recyclerview
-public class GoalAdapter (private val goalList: List<Goal>) : RecyclerView.Adapter<GoalAdapter.GoalViewHolder>()
+import com.example.taskmanager.databinding.GoalItemBinding
+
+class GoalAdapter () : RecyclerView.Adapter<GoalAdapter.GoalViewHolder>()
 {
+    var data: List<Goal> = emptyList()
+        set(newValue){
+            field = newValue
+            notifyDataSetChanged()
+        }
 
+    override fun getItemCount(): Int = data.size
 
-//          override methods
-    override fun getItemCount(): Int = goalList.size
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.goal_item, parent, false)
-        return GoalViewHolder(view)
-    } //complete
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = GoalItemBinding.inflate(inflater, parent, false)
+
+        return GoalViewHolder(binding)
+    }
 
     override fun onBindViewHolder(holder: GoalViewHolder, position: Int) {
-        val goal = goalList[position]
+        val goal = data[position]
 
         holder.textTitle.text = goal.Title
-        holder.textStatus.text = "Status: ${goal.IdStatus}"
-        holder.textCategory.text = "Category: ${goal.IdCategory}"
-        holder.textImportance.text = "Importance: ${goal.IdImportance}"
+        holder.textStatus.text = goal.Status
+        holder.textCategory.text = goal.Category
+        holder.textImportance.text = goal.Importance
 
-        if (goal.IsComplete) {
-            holder.textTitle.setTextColor(0xFF4CAF50.toInt()) // Зелёный
-        } else {
-            holder.textTitle.setTextColor(0xFFFF6B68.toInt()) // Красноватый
-        }
+//        if (goal.IsComplete) {
+//            holder.textTitle.setTextColor(0xFF4CAF50.toInt()) // Зелёный
+//        } else {
+//            holder.textTitle.setTextColor(0xFFFF6B68.toInt()) // Красноватый
+//        }
     }
 
-    class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textTitle: TextView = itemView.findViewById(R.id.tvTitle)
-        val textStatus: TextView = itemView.findViewById(R.id.tvStatus)
-        val textCategory: TextView = itemView.findViewById(R.id.tvCategory)
-        val textImportance: TextView = itemView.findViewById(R.id.tvImportance)
+    class GoalViewHolder(val binding: GoalItemBinding) : RecyclerView.ViewHolder(binding.root) { // todo: from View to Binding
+        val textTitle = binding.tvTitle
+        val textStatus = binding.tvStatus
+        val textCategory = binding.tvCategory
+        val textImportance = binding.tvImportance
     }
 }
-
-
-//onBindViewHolder, getItemCount

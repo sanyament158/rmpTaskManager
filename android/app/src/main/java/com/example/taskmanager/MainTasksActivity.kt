@@ -9,6 +9,7 @@ import com.example.taskmanager.databinding.ActivityMainTasksBinding
 
 class MainTasksActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainTasksBinding
+    private lateinit var adapter: GoalAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
