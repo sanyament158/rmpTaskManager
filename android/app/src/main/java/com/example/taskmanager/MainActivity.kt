@@ -1,5 +1,6 @@
 package com.example.taskmanager
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +20,8 @@ public class MainActivity : AppCompatActivity() {
             tvGreeting.setText("hello, ${CurrentUser.Username} \nyou have {count} tasks at today") //todo: fname and lname implement
 
             btnGoToTasks.setOnClickListener {
-                // todo: go to tasks activity
-
+                val intent = Intent(this@MainActivity, TasksActivity().javaClass) //todo: check idRole in the future
+                startActivity(intent)
             }
 
             btnGoToStock.setOnClickListener {

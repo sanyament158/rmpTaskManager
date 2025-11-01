@@ -54,7 +54,6 @@ in the future, must be git init in /opt/htdocs/taskmanagerapi/ --success
 tasks: login.php: why post and not get --success
 
 pre-commit 31oct 21:00{
-	in Goal.kt use the human-readble values
 	
 }
 

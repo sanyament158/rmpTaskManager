@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar">
         <activity
-            android:name=".MainTasksActivity"
+            android:name=".TasksActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
