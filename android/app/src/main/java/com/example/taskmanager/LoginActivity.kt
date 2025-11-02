@@ -1,6 +1,5 @@
 package com.example.taskmanager
 
-import BDModels.User
 import CurrentUser
 import DataClasses.UserRequest
 import DataClasses.UserResponse
@@ -9,20 +8,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.res.booleanResource
-import androidx.compose.ui.text.LinkAnnotation
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.coroutineScope
 import com.example.taskmanager.databinding.ActivityLoginBinding
 import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,8 +22,6 @@ import kotlinx.coroutines.withContext
 import androidx.lifecycle.lifecycleScope
 
 // Для ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlin.jvm.java
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -50,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
                     val userRequest = UserRequest(username, password)
 
                      lifecycle.coroutineScope.launch(Dispatchers.IO){
-                        val authUser = AuthorizationUser(userRequest)
+                        val authUser = authorizationUser(userRequest)
                         if (authUser.IsAuth) {
                             CurrentUser.Username = authUser.Username
                             CurrentUser.IdRole = authUser.IdRole
@@ -89,40 +78,34 @@ class LoginActivity : AppCompatActivity() {
                 connection.doOutput = true
                 connection.setRequestProperty("Content-Type", "application/json")
 
-                Log.i("URL", "URL has been created")
+                Log.i("Connection", "Connection has been created")
 
                 // create request json
-                val requestJson: JSONObject = JSONObject()
-                requestJson.put("username", inputUser.Username.lowercase())
-                requestJson.put("password", inputUser.Password )
+                val jsonRequest: JSONObject = JSONObject()
+                jsonRequest.put("username", inputUser.Username.lowercase())
+                jsonRequest.put("password", inputUser.Password )
 
-                Log.i("JSON request", "has been created; body: ${requestJson}")
+                Log.i("JSON REQUEST", "login/reg.php : has been created; body: ${jsonRequest}")
 
                 // flush request
                 connection.outputStream.use {
-                    it.write(requestJson.toString().toByteArray(Charsets.UTF_8))
-                    Log.i("OutputStream", "JSON data written successfully")
+                    it.write(jsonRequest.toString().toByteArray(Charsets.UTF_8))
+                    Log.i("JSON REQUEST", "login/reg.php : JSON data flushed successfully")
                 }
                 val responseCode = connection.responseCode
 
-                Log.i("ResponseCode", "http code = ${responseCode}")
+                Log.i("ResponseCode", "login/reg.php : http code = ${responseCode}")
 
                 // fetch response
-                val responseText = connection.inputStream.bufferedReader(Charsets.UTF_8).use {it.readText()}
-                val responseJson = JSONObject(responseText)
-                Log.i("responseJson", "body: ${responseJson}")
-
-                // [for dev only. logging some object -- as a example]
-                Log.i("[json] success", "${responseJson.getBoolean("success")}")
-                Log.i("[json] username", "${responseJson.getString("username")}")
-
-
+                val textResponse = connection.inputStream.bufferedReader(Charsets.UTF_8).use {it.readText()}
+                val jsonResponse = JSONObject(textResponse)
+                Log.i("JSON RESPONSE", "login/reg.php : body = ${jsonResponse}")
             } catch (error: Exception) {
-                Log.e("RegistrationUser", "error = " + error.message.toString())
+                Log.e("ERROR", "func = <registrationUser> : login/reg.php : error = " + error.message.toString())
             }
         }
     }
-    private suspend fun AuthorizationUser(inputUser: UserRequest): UserResponse =
+    private suspend fun authorizationUser(inputUser: UserRequest): UserResponse =
         //work with api
         withContext(Dispatchers.IO){
         try{
@@ -135,19 +118,19 @@ class LoginActivity : AppCompatActivity() {
             connection.doInput = true
             connection.setRequestProperty("Content-Type", "application/json")
 
-            Log.i("URL", "URL has been created")
+            Log.i("URL", "Authorization URL has been created : ${url}")
 
             //create request json
             val requestJson: JSONObject = JSONObject()
             requestJson.put("username", inputUser.Username.lowercase())
             requestJson.put("password", inputUser.Password)
 
-            Log.i("JSON request", "has been created; body: ${requestJson}")
+            Log.i("JSON REQUEST", "login/login.php json body : ${requestJson}")
 
             // flush request
             connection.outputStream.use {
                 it.write(requestJson.toString().toByteArray(Charsets.UTF_8))
-                Log.i("OutputStream", "JSON data written successfully")
+                Log.i("JSON REQUEST", "login/login.php JSON data flushed successfully")
             }
 
             // fetch response
@@ -156,7 +139,7 @@ class LoginActivity : AppCompatActivity() {
 
             // success check
             if (!responseJson.getBoolean("success")){
-                Log.e("server error:", "success = false; body = ${responseJson}")
+                Log.e("SERVER ERROR", "login/login.php : success = false; body = ${responseJson}")
                 return@withContext UserResponse(Username = "unknown", IdRole = 0) // todo: must be not the literal
             }
 
@@ -166,7 +149,7 @@ class LoginActivity : AppCompatActivity() {
             return@withContext UserResponse(Username = userResponseJson.getString("Username"), IdRole = 0, IsAuth = responseJson.getBoolean("success"))
 
         } catch (e: Exception){
-            Log.e("Authorization Error:", "message: ${e.message}")
+            Log.e("SERVER ERROR", "func = <authorizationUser> : login/login.php: message = ${e.message}")
             return@withContext UserResponse(Username = "unknown", IdRole = 0)
         }
     }

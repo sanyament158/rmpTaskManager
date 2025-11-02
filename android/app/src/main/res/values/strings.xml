@@ -8,5 +8,8 @@
     <string name="greetingMainTasks">here is your tasks</string>
     <string name="myTasks">my</string>
     <string name="selectTasks">select</string>
+    <string name="create">create</string>
+    <string name="delete">delete</string>
+    <string name="update">edit</string>
 
 </resources>

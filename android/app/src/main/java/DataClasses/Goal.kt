@@ -2,11 +2,11 @@ package com.example.taskmanager.DataClasses
 
 import android.R
 class Goal(
-    public val Owner: String,
-    val Status: String,
-    val Category: String,
-    val Importance: String,
-    val Title: String,
-    val Description: String,
-    var IsComplete: Boolean
+    val Owner: String = "def owner",
+    val Status: String = "def status",
+    val Category: String ="def category",
+    val Importance: String = "def importance",
+    val Title: String = "def title",
+    val Description: String = "def description",
+    var IsComplete: Boolean = true
 )

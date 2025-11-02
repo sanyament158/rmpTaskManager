@@ -56,12 +56,52 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTasks"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_margin="10dp"
         android:background="@color/AutumnHarvest_cheese"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSorting" />
-    
+
+    <Button
+        android:id="@+id/btnCreate"
+        style="@style/ButtonDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create"
+        android:layout_margin="30dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTasks" />
+    <Button
+        android:id="@+id/btnDelete"
+        style="@style/ButtonDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:layout_margin="30dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTasks" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        style="@style/EditTextDefault"
+        android:hint="title"
+
+        app:layout_constraintTop_toBottomOf="@+id/btnCreate" />
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        style="@style/EditTextDefault"
+        android:hint="description"
+
+        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
