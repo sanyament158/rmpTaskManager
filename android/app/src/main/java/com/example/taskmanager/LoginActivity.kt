@@ -32,6 +32,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(binding){
+            btnSignUp.setOnClickListener {
+                val username: String = etLogin.text.toString()
+                val password: String = etPassword.text.toString()
+                lifecycle.coroutineScope.launch {
+                    registrationUser(UserRequest(username, password))
+
+                    // todo: handle a successful registration
+                }
+            }
+
             btnSubmit.setOnClickListener {
                 if (etLogin.text != null && etPassword.text != null){
                     val username: String = etLogin.text.toString()
