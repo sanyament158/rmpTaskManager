@@ -49,7 +49,7 @@ class TasksActivity : AppCompatActivity() {
             tasksAdapter.data = getTasks()
         }
     }
-    private suspend fun postTask(goal: Goal): Boolean =
+    private suspend fun postTask(goal: Goal): Boolean = // must be human-readable
         withContext(Dispatchers.IO){
             try {
                 // create & setup connection
@@ -120,10 +120,10 @@ class TasksActivity : AppCompatActivity() {
                     val jsonGoal = jsonGoals.getJSONObject(goalIndex)
 
                     val goalObject = Goal( // replace id to factical values
-                        jsonGoal.getString("IdOwner"),
-                        jsonGoal.getString("IdStatus"),
-                        jsonGoal.getString("IdCategory"),
-                        jsonGoal.getString("IdImportance"),
+                        jsonGoal.getString("Owner"),
+                        jsonGoal.getString("Status"),
+                        jsonGoal.getString("Category"),
+                        jsonGoal.getString("Importance"),
                         jsonGoal.getString("Title"),
                         jsonGoal.getString("Description"),
                         jsonGoal.getBoolean("IsComplete")
